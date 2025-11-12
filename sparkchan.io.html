@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SouthPark-Chan | zk-meme runtime</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #050505;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    canvas#bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, #0d0d0d 0%, #000 100%);
+    }
+    .btn {
+      transition: all 0.2s ease-in-out;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px #ffcc33;
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen">
+
+  <canvas id="bg"></canvas>
+
+  <section id="hero" class="flex flex-col items-center justify-center text-center py-20">
+    <img 
+      src="a140ee6c-0798-429e-8a30-7843aa1df891.png" 
+      alt="SouthPark-Chan Banner" 
+      class="rounded-xl shadow-lg max-w-5xl w-full mb-6"
+    />
+    <p class="text-[#ffcc33] text-lg max-w-3xl leading-relaxed px-4">
+      <strong>SouthPark-Chan</strong> is a privacy-preserving, meme-powered runtime for the new internet.  
+      A place where freedom, culture, and computation collide.
+    </p>
+  </section>
+
+  <section id="about" class="max-w-4xl text-center px-6 py-12">
+    <h2 class="text-3xl font-bold mb-4 text-[#ffcc33]">What is $SPARKCHAN?</h2>
+    <p class="text-gray-300 leading-relaxed">
+      $SPARKCHAN fuses zero-knowledge proofs and cultural computation.  
+      Built on zk-meme proof architecture, it turns memes into programmable logic —  
+      powering privacy-native apps, decentralized creativity, and a culture of unstoppable expression.
+    </p>
+  </section>
+
+  <section id="join" class="text-center py-16 bg-[#111]/70 w-full">
+    <h2 class="text-3xl font-bold text-[#ffcc33] mb-4">Join the Movement</h2>
+    <p class="text-gray-300 mb-6 px-4">
+      The revolution of zk-memes has begun.  
+      Step into the arena and follow <span class="text-[#ffcc33] font-semibold">$SPARKCHAN</span> on the timeline.
+    </p>
+    <a 
+      href="https://x.com/SouthPark_Chan" 
+      target="_blank"
+      class="btn inline-block bg-[#ffcc33] text-black font-bold py-3 px-6 rounded-lg shadow-lg"
+    >
+      ⚡ Follow on X
+    </a>
+  </section>
+
+  <footer class="py-6 text-gray-500 text-sm text-center">
+    Powered by zk-meme proof architecture · © 2025 SouthPark-Chan
+  </footer>
+
+  <script>
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let grid = [];
+    const gridSize = 50;
+    const speed = 0.5;
+
+    for (let x = 0; x < canvas.width; x += gridSize) {
+      for (let y = 0; y < canvas.height; y += gridSize) {
+        grid.push({ x, y });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = "rgba(255, 204, 51, 0.3)";
+      ctx.lineWidth = 1;
+
+      grid.forEach((point, i) => {
+        const yShift = (Math.sin(Date.now() / 500 + i) * 5);
+        ctx.beginPath();
+        ctx.moveTo(point.x, point.y + yShift);
+        ctx.lineTo(point.x + gridSize, point.y + yShift);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(point.x, point.y + yShift);
+        ctx.lineTo(point.x, point.y + gridSize + yShift);
+        ctx.stroke();
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+
+</body>
+</html>
