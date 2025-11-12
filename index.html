@@ -28,13 +28,32 @@
     .btn:hover {
       transform: scale(1.05);
       box-shadow: 0 0 12px #ffcc33;
-    }
+    } #corner-text {
+  position: fixed;
+  top: 20px;
+  left: 24px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffcc33;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 8px rgba(255, 204, 51, 0.7);
+  z-index: 50;
+  cursor: default;
+  transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+#corner-text:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 16px rgba(255, 204, 51, 1);
+}
   </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen">
 
   <canvas id="bg"></canvas>
-
+<div id="corner-text">
+  SouthPark-Chan
+</div>
   <section id="hero" class="flex flex-col items-center justify-center text-center py-20">
     <img
       src="a140ee6c-0798-429e-8a30-7843aa1df891.png" 
