@@ -1,178 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SouthPark-Chan | zk-meme runtime</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SPARKCHAN v2.0 — zk-Meme Runtime</title>
+  <meta name="description" content="SPARKCHAN — A privacy-preserving, meme-powered runtime for the new internet. zk-meme engine, MemeOS SDK, privacy-native identity." />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      background-color: #050505;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
+    :root{
+      --neon-yellow:#ffcc33;
+      --electric-blue:#00f0ff;
+      --bg-dark:#050505;
+      --card:#0f0f11;
     }
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:var(--bg-dark);
+      color:#e6e6e6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Canvas background occupies full screen */
     canvas#bg {
       position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, #0d0d0d 0%, #000 100%);
+      inset:0;
+      z-index:0;
+      width:100%;
+      height:100%;
+      display:block;
+      background: radial-gradient(circle at 20% 10%, rgba(0,0,0,0.2), transparent 20%), radial-gradient(circle at 80% 90%, rgba(0,0,0,0.2), transparent 30%), #000;
     }
-    .btn {
-      transition: all 0.2s ease-in-out;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 12px #ffcc33;
-    } #corner-text {
-  position: fixed;
-  top: 20px;
-  left: 24px;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #ffcc33;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 8px rgba(255, 204, 51, 0.7);
-  z-index: 9999; 
-      
-      pointer-events: none; {
-      
-  cursor: default;
-  transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
-}
 
-#corner-text:hover {
-  transform: scale(1.1);
-  text-shadow: 0 0 16px rgba(255, 204, 51, 1);
-}
+    /* Layout container sits above canvas */
+    .site-wrap{position:relative;z-index:10;min-height:100vh; display:flex; flex-direction:column; align-items:center;}
+
+    /* Corner brand text */
+    #corner-text {
+      position: fixed;
+      top:18px;
+      left:22px;
+      z-index:40;
+      color:var(--neon-yellow);
+      font-family: 'Orbitron', sans-serif;
+      font-weight:700;
+      letter-spacing:0.6px;
+      text-shadow:0 0 10px rgba(255,204,51,0.75);
+      pointer-events:none;
+    }
+
+    /* Hero styles */
+    .hero {
+      padding:5.5rem 1.25rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+    }
+    .hero-card{
+      width:100%;
+      max-width:1200px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:1.5rem;
+      align-items:center;
+    }
+    @media(min-width:992px){
+      .hero-card{grid-template-columns:1fr 520px; gap:2.5rem;}
+    }
+    .glow-cta{
+      background: linear-gradient(90deg,var(--neon-yellow), #ffd77f);
+      color:#000;
+      padding:0.8rem 1.1rem;
+      font-weight:700;
+      border-radius:12px;
+      box-shadow:0 6px 30px rgba(255,204,51,0.08),0 0 18px rgba(255,204,51,0.08);
+      transition:transform .18s ease, box-shadow .25s ease;
+    }
+    .glow-cta:hover{transform:translateY(-3px); box-shadow:0 10px 38px rgba(255,204,51,0.18);}
+
+    /* Card look */
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,204,51,0.06);
+      padding:1.4rem;
+      border-radius:14px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+    }
+
+    .tech-grid { display:grid; grid-template-columns:1fr; gap:1rem; }
+    @media(min-width:880px){ .tech-grid{grid-template-columns:repeat(3,1fr);} }
+
+    .tech-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border-radius:12px;
+      padding:1rem;
+      border:1px solid rgba(255,204,51,0.04);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .tech-card:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255,204,51,0.06);
+      border-color: rgba(255,204,51,0.12);
+    }
+    .tag {
+      display:inline-block;
+      padding:.25rem .5rem;
+      border-radius:999px;
+      background: rgba(255,204,51,0.08);
+      color:var(--neon-yellow);
+      font-weight:600;
+      font-size:12px;
+      letter-spacing:0.4px;
+    }
+
+    /* Arena Section */
+    .arena {
+      width:100%;
+      padding:3.5rem 1.25rem;
+      display:flex;
+      justify-content:center;
+    }
+
+    /* Community row */
+    .community {
+      display:flex;
+      gap:1rem;
+      align-items:center;
+      justify-content:center;
+      margin-top:1rem;
+    }
+    .social-icon {
+      width:48px;height:48px;border-radius:10px; display:inline-flex; align-items:center; justify-content:center;
+      background:#fff; color:#000; box-shadow:0 8px 24px rgba(0,0,0,0.5);
+      transition: transform .12s ease, box-shadow .18s ease;
+    }
+    .social-icon:hover{transform:translateY(-4px); box-shadow:0 18px 44px rgba(0,0,0,0.6);}
+
+    footer { width:100%; padding:2rem 1rem; border-top:1px solid rgba(255,255,255,0.03); margin-top:2rem; text-align:center;}
   </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen">
+<body>
+  <!-- Animated canvas background -->
+  <canvas id="bg" aria-hidden="true"></canvas>
 
-  <canvas id="bg"></canvas>
-<div id="corner-text">
-  SouthPark-Chan CA : 
-  
-</div>
-  <section id="hero" class="flex flex-col items-center justify-center text-center py-20">
-    <img
-      src="a140ee6c-0798-429e-8a30-7843aa1df891.png" 
-  alt="SouthPark-Chan"
- 
-    />
-    <p class="text-[#ffcc33] text-lg max-w-3xl leading-relaxed px-4">
-      <strong>SouthPark-Chan</strong> is a privacy-preserving, meme-powered runtime for the new internet.  
-      A place where freedom, culture, and computation collide.
-    </p>
-  </section>
+  <!-- Corner brand text -->
+  <div id="corner-text" aria-hidden="true">SouthPark-Chan</div>
 
-  <section id="about" class="max-w-4xl text-center px-6 py-12">
-    <h2 class="text-3xl font-bold mb-4 text-[#ffcc33]">Why is SPARKCHAN?</h2>
-    <p class="text-gray-300 leading-relaxed">
-      SPARKCHAN fuses zero-knowledge proofs and cultural computation.  
-      Built on zk-meme proof architecture, it turns memes into programmable logic —  
-      powering privacy-native apps, decentralized creativity, and a culture of unstoppable expression.
-    </p>
-  </section>
+  <div class="site-wrap">
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-card">
+        <div>
+          <div class="panel">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div style="width:52px;height:52px;border-radius:12px;background:linear-gradient(90deg,var(--neon-yellow),#ffc76b);display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;font-family:Orbitron;">S</div>
+                <div>
+                  <div style="font-family: 'Orbitron', sans-serif; font-size:1.15rem; font-weight:800;">$SPARKCHAN</div>
+                  <div style="font-size:12px;color:#bdbdbd;margin-top:2px;">Where Satire Becomes Computation</div>
+                </div>
+              </div>
+              <div class="tag">v2.0 • Live</div>
+            </div>
 
-  <section id="join" class="text-center py-16 bg-[#111]/70 w-full">
-    <h2 class="text-3xl font-bold text-[#ffcc33] mb-4">Join the Movement</h2>
-    <p class="text-gray-300 mb-6 px-4">
-      The revolution of zk-memes has begun.  
-      Step into the arena and follow <span class="text-[#ffcc33] font-semibold">$SPARKCHAN</span> on the timeline.
-    </p>
-    <a 
-  href="https://x.com/SouthPark_Chan" 
-  target="_blank"
-  class="btn inline-flex items-center gap-2 bg-white text-black font-bold py-3 px-6 rounded-lg shadow-lg"
->
+            <h1 style="font-size: clamp(28px, 4vw, 48px); font-weight:800; margin-bottom: .6rem;">Enter the zk-Memeverse</h1>
+            <p style="color:#dcdcdc;line-height:1.45; margin-bottom:1rem; max-width:56ch;">
+              <strong>SPARKCHAN</strong> is a privacy-preserving, meme-powered runtime for the new internet — where culture is verifiable, private, and programmable.
+            </p>
 
-  <!-- SVG logo X -->
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" class="w-5 h-5 fill-black">
-    <path d="M714.163 519.284L1160.89 0H1058.69L668.898 450.887L356.205 0H0L468.771 681.821L0 1226.37H102.195L515.679 751.508L843.795 1226.37H1200L714.137 519.284H714.163ZM569.165 686.238L520.373 617.356L139.428 79.6961H306.615L611.412 516.077L660.204 584.959L1058.76 1150.3H891.573L569.165 686.238Z"/>
-  </svg>
-  Follow on X
-</a>
+            <div class="flex items-center gap-3">
+              <a href="#tech" class="glow-cta">Explore the zk-Tech</a>
+              <a href="https://x.com/SouthPark_Chan" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-700 text-sm" style="background:#fff;color:#000;font-weight:700;">
+                <!-- X icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" class="w-4 h-4" style="width:18px;height:18px;fill:#000;"><path d="M714.163 519.284L1160.89 0H1058.69L668.898 450.887L356.205 0H0L468.771 681.821L0 1226.37H102.195L515.679 751.508L843.795 1226.37H1200L714.137 519.284H714.163ZM569.165 686.238L520.373 617.356L139.428 79.6961H306.615L611.412 516.077L660.204 584.959L1058.76 1150.3H891.573L569.165 686.238Z"/></svg>
+                Follow on X
+              </a>
+            </div>
+          </div>
 
-    <section id="tech" class="max-w-5xl text-center px-6 py-16">
-    <h2 class="text-3xl font-bold mb-6 text-[#ffcc33]">The Tech Behind SPARKCHAN</h2>
-    <p class="text-gray-300 leading-relaxed mb-6">
-      SPARKCHAN is built where <span class="text-[#ffcc33] font-semibold">memes meet zero-knowledge proofs</span>.
-      A decentralized runtime powered by zk-computation, on-chain culture, and unstoppable freedom.
-    </p>
+          <!-- quick stats row -->
+          <div class="flex gap-3 mt-5">
+            <div class="panel" style="flex:1;">
+              <div style="font-weight:700;color:var(--neon-yellow);">RISC-V Native</div>
+              <div style="color:#bdbdbd;font-size:14px;">Compile Rust/C++/Go → run in runtime</div>
+            </div>
+            <div class="panel" style="flex:1;">
+              <div style="font-weight:700;color:var(--neon-yellow);">zkSNARKs</div>
+              <div style="color:#bdbdbd;font-size:14px;">Privacy-first proof generation</div>
+            </div>
+            <div class="panel" style="flex:1;">
+              <div style="font-weight:700;color:var(--neon-yellow);">MemeOS SDK</div>
+              <div style="color:#bdbdbd;font-size:14px;">Build meme-dApps quickly</div>
+            </div>
+          </div>
+        </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mt-8">
-      <div class="bg-[#111]/70 p-6 rounded-2xl shadow-lg hover:shadow-[#ffcc33]/30 transition">
-        <h3 class="text-xl font-semibold text-[#ffcc33] mb-2">⚙️ zk-Meme Engine</h3>
-        <p class="text-gray-400">Turns memes into verifiable logic. Privacy-first, composable, and fun.</p>
+        <!-- Right side image / hero art -->
+        <aside style="display:flex;align-items:center;justify-content:center;">
+          <!-- Replace src with your own hero image path in public/ -->
+          <div style="max-width:460px;width:100%;">
+            <img src="/a140ee6c-0798-429e-8a30-7843aa1df891.png" alt="SouthPark-Chan hero" style="width:100%;border-radius:12px;box-shadow:0 18px 48px rgba(0,0,0,0.6);" />
+          </div>
+        </aside>
       </div>
-      <div class="bg-[#111]/70 p-6 rounded-2xl shadow-lg hover:shadow-[#ffcc33]/30 transition">
-        <h3 class="text-xl font-semibold text-[#ffcc33] mb-2">🌐 Decentralized Culture Layer</h3>
-        <p class="text-gray-400">Where creators and warriors build open, censorship-proof narratives.</p>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="w-full max-w-6xl px-6 py-12">
+      <div class="panel" style="display:flex;gap:1.25rem;align-items:center;flex-direction:column;">
+        <div style="display:flex;gap:1.25rem;align-items:center;width:100%;flex-direction:column;">
+          <div style="width:100%;display:flex;flex-direction:row;gap:1.25rem;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+            <div style="flex:1;min-width:260px;">
+              <h2 style="font-size:22px;font-weight:800;color:var(--neon-yellow);margin-bottom:.5rem;">What is SPARKCHAN?</h2>
+              <p style="color:#d4d4d4;line-height:1.6;">
+                SPARKCHAN is a privacy-native runtime that turns memes into verifiable computation. Compile to RISC-V, generate zk-proofs automatically, and deploy cultural dApps that protect identity while proving integrity.
+              </p>
+              <ul style="margin-top:1rem;color:#bdbdbd;">
+                <li>• Proofs for creativity — cryptographic provenance for every meme</li>
+                <li>• Privacy-first identity via zk-ID</li>
+                <li>• Interoperable across chains via bridge layer</li>
+              </ul>
+            </div>
+
+            <div style="width:320px;">
+              <div style="background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:10px; padding:12px; border:1px solid rgba(255,204,51,0.04);">
+                <div style="font-weight:700;color:var(--neon-yellow);margin-bottom:.5rem;">Quick Links</div>
+                <a href="#tech" class="block" style="color:#dcdcdc;margin-bottom:.35rem;">• The zk-Meme Stack</a>
+                <a href="#arena" class="block" style="color:#dcdcdc;margin-bottom:.35rem;">• Arena & Tournaments</a>
+                <a href="https://github.com/" class="block" style="color:#dcdcdc;">• GitHub / Docs</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="bg-[#111]/70 p-6 rounded-2xl shadow-lg hover:shadow-[#ffcc33]/30 transition">
-        <h3 class="text-xl font-semibold text-[#ffcc33] mb-2">💡 Privacy-Native Runtime</h3>
-        <p class="text-gray-400">Run zk-apps that merge memes, art, and computation seamlessly.</p>
+    </section>
+
+    <!-- TECH -->
+    <section id="tech" class="w-full max-w-6xl px-6 py-12">
+      <h3 style="font-size:20px;font-weight:800;color:var(--neon-yellow);margin-bottom:1rem;">The zk-Meme Stack</h3>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h4 style="font-weight:800;color:var(--neon-yellow);margin-bottom:.5rem;">zk-Meme Engine</h4>
+          <p style="color:#cfcfcf;margin-bottom:.6rem;">Native proof generation for meme operations. Each action emits a zkSNARK ensuring integrity while preserving privacy.</p>
+          <small style="color:#9b9b9b;">Tech: circom/snarkjs prototype → rust/arkworks for production</small>
+        </div>
+        <div class="tech-card">
+          <h4 style="font-weight:800;color:var(--neon-yellow);margin-bottom:.5rem;">Cultural Compute Layer</h4>
+          <p style="color:#cfcfcf;margin-bottom:.6rem;">Modular runtime that stores cultural state; supports memetoken economics and reputation metrics.</p>
+          <small style="color:#9b9b9b;">Tech: onchain contracts (Solana/EVM), state indexing</small>
+        </div>
+        <div class="tech-card">
+          <h4 style="font-weight:800;color:var(--neon-yellow);margin-bottom:.5rem;">Privacy-Native ID</h4>
+          <p style="color:#cfcfcf;margin-bottom:.6rem;">zk-ID allows anonymous yet verifiable participation with zero doxxing.</p>
+          <small style="color:#9b9b9b;">Tech: Semaphore / Noir / Halo2</small>
+        </div>
+
+        <div class="tech-card">
+          <h4 style="font-weight:800;color:var(--neon-yellow);margin-bottom:.5rem;">MemeOS SDK</h4>
+          <p style="color:#cfcfcf;margin-bottom:.6rem;">JS/TS SDK + MemeVM modules for building meme dApps and arenas quickly.</p>
+          <small style="color:#9b9b9b;">Includes: CLI, verifier contract templates, test harness</small>
+        </div>
+        <div class="tech-card">
+          <h4 style="font-weight:800;color:var(--neon-yellow);margin-bottom:.5rem;">Interchain Bridge</h4>
+          <p style="color:#cfcfcf;margin-bottom:.6rem;">Cross-chain meme state sync to keep culture interoperable across ecosystems.</p>
+          <small style="color:#9b9b9b;">Tech: Axelar/Wormhole integrations (roadmap)</small>
+        </div>
+        <div class="tech-card">
+          <h4 style="font-weight:800;color:var(--neon-yellow);margin-bottom:.5rem;">Tools & Explorer</h4>
+          <p style="color:#cfcfcf;margin-bottom:.6rem;">zk-Meme Explorer to verify proofs, Dashboard for creators, and Arena protocol for tournaments.</p>
+          <small style="color:#9b9b9b;">Beta: explorer.sparkchan.io (coming)</small>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <p class="mt-10 text-gray-400 italic">
-      Built for the new internet — private, playful, and unstoppable.
-    </p>
-  </section>
+    <!-- ARENA -->
+    <section id="arena" class="arena">
+      <div style="max-width:1000px;width:100%;display:flex;gap:1rem;align-items:center;flex-direction:column;">
+        <div class="panel" style="text-align:center; padding:2rem;">
+          <h3 style="font-weight:800;font-size:22px;color:var(--neon-yellow);margin-bottom:0.5rem;">Step into the Arena</h3>
+          <p style="color:#d6d6d6; margin-bottom:1rem;">Compete, remix, and prove your meme. Score with verifiable logic and win community rewards.</p>
+          <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+            <a href="#join" class="glow-cta">Join the Arena ⚔️</a>
+            <a href="#tech" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-700 text-sm" style="color:#dcdcdc;">Read Protocol</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- COMMUNITY / FOLLOW -->
+    <section id="join" class="w-full px-6 py-10">
+      <div style="max-width:900px;margin:0 auto;text-align:center;">
+        <h4 style="font-weight:800;color:var(--neon-yellow);margin-bottom:.5rem;">Join the Movement</h4>
+        <p style="color:#d6d6d6;margin-bottom:1rem;">Follow the drops, join tournaments, and build the memeverse with us.</p>
 
-  <footer class="py-6 text-gray-500 text-sm text-center">
-    Powered by zk-meme proof architecture · © 2025 SouthPark-Chan
-  </footer>
+        <div class="community" style="justify-content:center;">
+          <a class="social-icon" href="https://x.com/SouthPark_Chan" target="_blank" aria-label="Follow on X">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" style="width:20px;height:20px;fill:#000;"><path d="M714.163 519.284L1160.89 0H1058.69L668.898 450.887L356.205 0H0L468.771 681.821L0 1226.37H102.195L515.679 751.508L843.795 1226.37H1200L714.137 519.284H714.163ZM569.165 686.238L520.373 617.356L139.428 79.6961H306.615L611.412 516.077L660.204 584.959L1058.76 1150.3H891.573L569.165 686.238Z"/></svg>
+          </a>
 
+          <a class="social-icon" href="https://github.com" target="_blank" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:20px;height:20px;fill:#000;"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.92.57.1.77-.25.77-.55 0-.27-.01-1-.02-1.96-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.69.08-.69 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.67 1.24 3.32.95.1-.75.4-1.24.72-1.53-2.56-.29-5.26-1.28-5.26-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.48.11-3.08 0 0 .97-.31 3.18 1.18.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.6.23 2.79.11 3.08.74.8 1.18 1.84 1.18 3.1 0 4.42-2.71 5.4-5.29 5.68.41.35.78 1.04.78 2.1 0 1.52-.01 2.75-.01 3.12 0 .3.2.66.78.55C20.71 21.39 24 17.08 24 12 24 5.73 18.27.5 12 .5z"/></svg>
+          </a>
+
+          <a class="social-icon" href="https://discord.gg" target="_blank" aria-label="Discord">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:20px;height:20px;fill:#000;"><path d="M20.317 4.369a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.08.037c-.21.375-.444.864-.608 1.249-1.844-.276-3.68-.276-5.486 0-.163-.405-.405-.874-.617-1.249a.077.077 0 00-.08-.037 19.736 19.736 0 00-4.885 1.515.069.069 0 00-.032.027C.533 9.045-.319 13.578.099 18.057c.001.014.01.028.024.037 2.052 1.507 4.041 2.422 5.992 3.029a.076.076 0 00.084-.027c.462-.63.873-1.295 1.226-1.994a.077.077 0 00-.042-.105c-.652-.247-1.274-.534-1.872-.86a.077.077 0 01-.007-.127c.125-.093.25-.188.372-.283a.077.077 0 01.08-.01c3.927 1.792 8.18 1.792 12.061 0a.077.077 0 01.082.009c.122.095.247.19.374.283a.077.077 0 01-.006.127c-.6.325-1.223.612-1.875.86a.077.077 0 00-.045.105c.36.697.772 1.362 1.233 1.99a.076.076 0 00.084.028c1.956-.608 3.946-1.523 5.998-3.03.016-.01.025-.024.026-.038.53-4.474-.327-8.99-3.548-13.662a.061.061 0 00-.03-.028zM8.02 15.331c-1.182 0-2.156-1.085-2.156-2.419 0-1.333.95-2.418 2.156-2.418 1.21 0 2.185 1.085 2.156 2.418 0 1.334-.95 2.419-2.156 2.419zm7.975 0c-1.182 0-2.156-1.085-2.156-2.419 0-1.333.95-2.418 2.156-2.418 1.21 0 2.185 1.085 2.156 2.418 0 1.334-.946 2.419-2.156 2.419z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="max-width:1100px;margin:0 auto;color:#bdbdbd;">
+        <div style="font-weight:700;color:var(--neon-yellow);margin-bottom:.4rem;">SPARKCHAN</div>
+        <div style="font-size:13px;">© 2025 SPARKCHAN — Where Satire Becomes Computation</div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Canvas animation script: cyberpunk grid with glowing lines -->
   <script>
-    const canvas = document.getElementById("bg");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+    function resize(){
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+      initGrid();
+    }
+    window.addEventListener('resize', resize);
+    resize();
 
     let grid = [];
-    const gridSize = 50;
-    const speed = 0.5;
+    let gridSize = Math.max(36, Math.floor(Math.min(canvas.width, canvas.height) / 28));
 
-    for (let x = 0; x < canvas.width; x += gridSize) {
-      for (let y = 0; y < canvas.height; y += gridSize) {
-        grid.push({ x, y });
+    function initGrid(){
+      grid = [];
+      gridSize = Math.max(36, Math.floor(Math.min(canvas.width, canvas.height) / 28));
+      for(let x=0;x<canvas.width;x+=gridSize){
+        for(let y=0;y<canvas.height;y+=gridSize){
+          grid.push({x,y, baseY:y, phase: Math.random()*Math.PI*2});
+        }
       }
     }
 
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.strokeStyle = "rgba(255, 204, 51, 0.3)";
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+
+      // background subtle gradient
+      const g = ctx.createLinearGradient(0,0,canvas.width,canvas.height);
+      g.addColorStop(0, "rgba(10,10,12,0.4)");
+      g.addColorStop(1, "rgba(0,0,0,0.6)");
+      ctx.fillStyle = g;
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+
+      // draw grid lines
       ctx.lineWidth = 1;
-
-      grid.forEach((point, i) => {
-        const yShift = (Math.sin(Date.now() / 500 + i) * 5);
+      grid.forEach((p,i)=>{
+        const t = Date.now()/1200;
+        const shift = Math.sin(t + p.phase) * 6;
+        const opacity = 0.12 + Math.abs(Math.sin(t*0.8 + p.phase))*0.12;
+        ctx.strokeStyle = `rgba(255,204,51, ${opacity})`;
+        // horizontal
         ctx.beginPath();
-        ctx.moveTo(point.x, point.y + yShift);
-        ctx.lineTo(point.x + gridSize, point.y + yShift);
+        ctx.moveTo(p.x, p.baseY + shift);
+        ctx.lineTo(p.x + gridSize, p.baseY + shift);
+        ctx.stroke();
+        // vertical
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.baseY + shift);
+        ctx.lineTo(p.x, p.baseY + gridSize + shift);
         ctx.stroke();
 
-        ctx.beginPath();
-        ctx.moveTo(point.x, point.y + yShift);
-        ctx.lineTo(point.x, point.y + gridSize + yShift);
-        ctx.stroke();
+        // tiny spark
+        if(Math.random() < 0.002){
+          ctx.fillStyle = 'rgba(0,240,255,0.7)';
+          ctx.fillRect(p.x + Math.random()*gridSize*0.9, p.baseY + Math.random()*gridSize*0.9, 2,2);
+        }
       });
+
+      // animated beams overlay
+      for(let i=0;i<3;i++){
+        const x = (Math.sin(Date.now()/1800 + i*1.7) * 0.5 + 0.5) * canvas.width;
+        ctx.beginPath();
+        const grd = ctx.createLinearGradient(x-200,0,x+200,0);
+        grd.addColorStop(0, 'rgba(255,204,51,0.02)');
+        grd.addColorStop(0.5, 'rgba(255,204,51,0.06)');
+        grd.addColorStop(1, 'rgba(255,204,51,0.02)');
+        ctx.fillStyle = grd;
+        ctx.fillRect(x-200,0,400,canvas.height);
+      }
 
       requestAnimationFrame(draw);
     }
 
     draw();
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
   </script>
 
 </body>
 </html>
+
