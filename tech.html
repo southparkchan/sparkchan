@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sparkchan Tech | zk-meme Architecture</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #050505;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    h1, h2 {
+      color: #ffcc33;
+    }
+
+    a {
+      color: #ffcc33;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    a:hover {
+      opacity: 0.8;
+    }
+
+    canvas#bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle at center, #0d0d0d 0%, #000 100%);
+    }
+  </style>
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen px-6">
+  <canvas id="bg"></canvas>
+
+  <div class="max-w-4xl py-20 text-center">
+    <h1 class="text-4xl font-bold mb-4">🧠 Sparkchan Technical Overview</h1>
+    <p class="text-gray-300 mb-8">
+      Sparkchan combines <span class="text-[#ffcc33] font-semibold">zero-knowledge computation</span> and <span class="text-[#ffcc33] font-semibold">meme-driven runtime logic</span>.
+      A next-gen internet protocol where privacy meets culture — empowering decentralized creativity and on-chain humor.
+    </p>
+
+    <h2 class="text-2xl font-bold mt-12 mb-3">📜 Architecture</h2>
+    <p class="text-gray-300 mb-8 leading-relaxed">
+      The <strong>zk-meme proof stack</strong> allows memes to act as executable smart logic.  
+      Below is a simplified architecture diagram:
+    </p>
+
+    <pre class="text-left bg-[#111]/70 p-4 rounded-lg text-gray-300 overflow-x-auto">
++---------------------------+
+| Frontend (Sparkchan.io)   |
+|  - HTML + Tailwind + ZK UI|
++-------------+-------------+
+              |
+              v
++---------------------------+
+| zk-Meme Runtime           |
+|  - Proof Generation (ZK)  |
+|  - Meme Logic Execution   |
+|  - Privacy Layer (SNARKs) |
++-------------+-------------+
+              |
+              v
++---------------------------+
+| Blockchain Layer          |
+|  - Smart Contract Bridge  |
+|  - On-chain Proof Storage |
++---------------------------+
+    </pre>
+
+    <h2 class="text-2xl font-bold mt-12 mb-3">🧩 Roadmap</h2>
+    <ul class="text-gray-300 list-disc list-inside text-left inline-block">
+      <li>✅ Launch v1 static site</li>
+      <li>🚧 Integrate zk-proof playground (v2)</li>
+      <li>⚡ Meme logic scripting toolkit</li>
+      <li>🌐 On-chain zk-verifier module</li>
+      <li>🧠 Sparkchan VM + runtime SDK</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold mt-12 mb-3">💡 Links</h2>
+    <p>
+      <a href="index.html">← Back to Home</a> • 
+      <a href="https://x.com/SouthPark_Chan" target="_blank">Follow on X</a>
+    </p>
+  </div>
+
+  <footer class="py-6 text-gray-500 text-sm text-center">
+    zk-Meme Architecture © 2025 Sparkchan
+  </footer>
+
+  <script>
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let grid = [];
+    const gridSize = 50;
+
+    for (let x = 0; x < canvas.width; x += gridSize) {
+      for (let y = 0; y < canvas.height; y += gridSize) {
+        grid.push({ x, y });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = "rgba(255, 204, 51, 0.3)";
+      ctx.lineWidth = 1;
+
+      grid.forEach((point, i) => {
+        const yShift = Math.sin(Date.now() / 500 + i) * 5;
+        ctx.beginPath();
+        ctx.moveTo(point.x, point.y + yShift);
+        ctx.lineTo(point.x + gridSize, point.y + yShift);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(point.x, point.y + yShift);
+        ctx.lineTo(point.x, point.y + gridSize + yShift);
+        ctx.stroke();
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+</body>
+</html>
