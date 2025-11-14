@@ -28,13 +28,14 @@
 
 ## 🎀 Live Demo
 🔗 https://sparkchan.vercel.app
+🔗 https://sparkchan.github.io/tech.html
 
 ---
 
 ## 📸 Preview
 
 <p align="center">
-  <img src="./sparkchan-tech.png" alt="Sparkchan Tech Preview" width="90%" style="border-radius: 20px; box-shadow: 0px 4px 20px rgba(0,0,0,0.15);" />
+  <img src="./sparkchan-preview.png" alt="Sparkchan Tech Preview" width="90%" style="border-radius: 20px; box-shadow: 0px 4px 20px rgba(0,0,0,0.15);" />
 </p>
 
 
