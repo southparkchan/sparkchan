@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="sparkchan banner.png" width="100%" alt="sparkchan Banner"/>
+  <img src="./sparkchan banner.png" width="100%" alt="Sparkchan Banner"/>
   <br><br>
 
   # 🌸 **SPARKCHAN**
@@ -15,37 +15,27 @@
 
 ## ✨ Features
 
-- 🎀 **Anime Mascot Integration** (Sparkchan kawaii ver.)
+- 🎀 **Anime Mascot Integration**
 - 🎨 **Pastel Soft UI Theme**
-- 🧩 **Modular HTML Structure** – simple to edit, easy to scale
-- ⚡ **Zero Dependencies** – no frameworks required
-- 📱 **Responsive Layout** – text left, mascot right
-- ☁️ **Deploy-ready** for GitHub Pages
-- 🌤 **Perfect for simple portfolios, landing pages & character pages**
+- 🧩 **Modular HTML Structure**
+- ⚡ **Zero Dependencies**
+- 📱 **Responsive Layout**
+- ☁️ **Deploy-ready for GitHub Pages**
 
 ---
 
 ## 🎀 Live Demo
-
-🔗 **https://sparkchan.github.io/sparkchan/tech.html**
+🔗 https://sparkchan.github.io/sparkchan/tech.html
 
 ---
 
 ## 📸 Preview
 
 <p align="center">
-  <img src="preview.png" width="90%" alt="Sparkchan Screenshot"/>
+  <img src="./preview.png" width="90%" alt="Sparkchan Preview"/>
 </p>
 
 ---
 
 ## 📂 Project Structure
 
-sparkchan/
-│── index.html
-│── tech.html
-│── style.css
-│── assets/
-│ └── sparkchan.png
-│── banner.png
-└── preview.png
