@@ -28,8 +28,7 @@
 
 ## 🎀 Live Demo
 🔗 https://sparkchan.vercel.app
-🔗 https://sparkchan.github.io/tech.html
-
+🔗 https://github.com/southparkchan/sparkchan/blob/main/tech.html
 ---
 
 ## 📸 Preview
