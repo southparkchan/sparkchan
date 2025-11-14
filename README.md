@@ -34,7 +34,7 @@
 ## 📸 Preview
 
 <p align="center">
-  <img src="./sparkchan-tech.png" width="90%" alt="Sparkchan Preview"/>
+  <img src="./sparkchan-preview.png" width="90%" alt="Sparkchan Preview"/>
 </p>
 
 ---
