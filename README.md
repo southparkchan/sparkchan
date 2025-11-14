@@ -25,7 +25,7 @@
 ---
 
 ## 🎀 Live Demo
-🔗 https://sparkchan.github.io/sparkchan/tech.html
+🔗 https://sparkchan.vercel.app
 
 ---
 
@@ -38,4 +38,10 @@
 ---
 
 ## 📂 Project Structure
-
+sparkchan/
+│── index.html
+│── tech.html
+│── README.md
+│── sparkchan banner.jpg
+│── sparkchan-tech.png
+└── assets/ (optional)
