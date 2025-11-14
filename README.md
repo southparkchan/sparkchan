@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="banner.png" width="100%" alt="Sparkchan Banner"/>
+  <img src="sparkchan banner.png" width="100%" alt="sparkchan Banner"/>
   <br><br>
 
   # 🌸 **SPARKCHAN**
