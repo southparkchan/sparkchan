@@ -3,169 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sparkchan — Tech</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>SPARKCHAN — Tech (Kawaii Ver.)</title>
 
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: #0c0c0f;
-      font-family: 'Montserrat', sans-serif;
-      color: white;
-      overflow-x: hidden;
+      font-family: "Inter", sans-serif;
+      background: #faf6ff;
+      color: #3a2a4a;
     }
 
-    /* CYBER GRID BG */
-    .grid-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
+    .header {
       width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(
-        to bottom,
-        rgba(0, 255, 255, 0.1) 0px,
-        rgba(0, 255, 255, 0.1) 1px,
-        transparent 1px,
-        transparent 40px
-      ),
-      repeating-linear-gradient(
-        to right,
-        rgba(0, 255, 255, 0.1) 0px,
-        rgba(0, 255, 255, 0.1) 1px,
-        transparent 1px,
-        transparent 40px
-      );
-      opacity: 0.15;
-      z-index: 0;
-    }
-
-    .container {
+      min-height: 460px;
+      background: linear-gradient(135deg, #ffb7ef, #ffd8f9, #b4e3ff);
+      border-bottom: 4px solid #00000010;
+      padding: 60px 40px;
       position: relative;
-      z-index: 2;
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
+      overflow: hidden;
     }
 
-    h1 {
-      font-size: 48px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 20px;
-      color: #ffcc33;
-      text-shadow: 0 0 20px rgba(255, 204, 51, 0.8);
+    /* kawaii anime character */
+    .anime {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 420px;
+      opacity: 1;
+      pointer-events: none;
+      filter: drop-shadow(0px 0px 22px #ffdaf9);
+    }
+
+    .title {
+      font-size: 54px;
+      font-weight: 900;
+      line-height: 1.1;
+      max-width: 60%;
+      z-index: 10;
+      position: relative;
+      color: #3c244f;
+      text-shadow: 0 0 10px #fff4;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      max-width: 55%;
+      margin-top: 16px;
+      opacity: 0.85;
+      z-index: 10;
+      position: relative;
+      color: #4e3d63;
+    }
+
+    .section {
+      padding: 60px 35px;
+      max-width: 1000px;
+      margin: auto;
     }
 
     h2 {
-      margin-top: 50px;
-      font-size: 26px;
-      color: #00eaff;
-      text-shadow: 0 0 10px rgba(0, 234, 255, 0.7);
+      font-size: 32px;
+      margin-bottom: 18px;
+      color: #4a3b66;
     }
 
-    p {
-      line-height: 1.7;
-      opacity: 0.9;
+    .card {
+      background: #ffffffb0;
+      border: 1px solid #e8dcee;
+      border-radius: 18px;
+      padding: 22px;
+      margin-top: 20px;
+      backdrop-filter: blur(7px);
+      box-shadow: 0 4px 10px #e9daf660;
     }
 
-    ul {
-      margin-left: 20px;
-      opacity: 0.9;
-    }
-
-    /* Anime Character Img */
-    .anime-box {
-      width: 100%;
+    .footer {
+      padding: 50px;
       text-align: center;
-      margin: 40px 0;
-    }
-
-    .anime-box img {
-      width: 360px;
-      max-width: 85%;
-      border-radius: 20px;
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
-      border: 2px solid rgba(255, 255, 255, 0.15);
-    }
-
-    /* Yellow link button */
-    .back-btn {
-      display: inline-block;
-      margin-top: 40px;
-      padding: 12px 22px;
-      background: white;
-      color: black;
-      border-radius: 10px;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 0 15px rgba(255,255,255,0.4);
-    }
-    .back-btn:hover {
-      background: #ffcc33;
-      color: black;
+      opacity: 0.6;
+      color: #6a5a8a;
     }
   </style>
 </head>
-
 <body>
 
-  <div class="grid-bg"></div>
-
-  <div class="container">
-
-    <h1>⚡ Sparkchan — Tech Overview</h1>
-
-    <!-- Anime Character -->
-    <div class="anime-box">
-      <img src="6f741993-4810-4ec4-9629-e6de0aec2c7a.png" alt="Sparkchan Anime">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="title">🌸 SPARKCHAN <br> Technical Framework</div>
+    <div class="subtitle">
+      Kawaii architecture • Soft UI • Modular components • Scalable for future versions  
     </div>
 
-    <p>
-      Sparkchan is the open experiment of building a fully on-chain, anime-powered
-      meme/agent/automation ecosystem.  
-      This page explains the tech stack & architecture powering Sparkchan v2 → v3.
-    </p>
+    <!-- kawaii anime character -->
+    <img
+      class="anime"
+      src="https://i.ibb.co/nQCDmrx/kawaii-tech-girl.png"
+      alt="anime"
+    />
+  </div>
 
-    <h2>🚀 Core System</h2>
-    <ul>
-      <li>Next.js static optimized front-end</li>
-      <li>Image CDN + edge caching</li>
-      <li>On-chain identity hooks (planned)</li>
-      <li>zk-meme computation engine (prototype)</li>
-    </ul>
+  <!-- MAIN CONTENT -->
+  <div class="section">
+    <h2>🌟 Core Stack</h2>
 
-    <h2>🧠 Spark Runtime</h2>
-    <p>
-      The Spark Runtime is a lightweight execution layer designed for:
-    </p>
-    <ul>
-      <li>auto-posting meme agents</li>
-      <li>webhook-triggered warp actions</li>
-      <li>mini zk modules</li>
-      <li>deterministic output & verifiable actions</li>
-    </ul>
-
-    <h2>📡 v3 Incoming Features</h2>
-    <ul>
-      <li>AI client inference (browser-local)</li>
-      <li>Cached zk-script verification</li>
-      <li>On-chain vaults</li>
-      <li>Creator-task pipelines</li>
-    </ul>
-
-    <h2>🛰 Architecture (Simple)</h2>
-    <p>
-      Client (browser UI) → Spark Runtime API → Edge Workers → On-chain layer.
-    </p>
-
-    <div style="text-align:center;">
-      <a href="index.html" class="back-btn">⬅ Back to Home</a>
+    <div class="card">
+      <b>Frontend:</b> Next.js 14 / React 19  
+      <br/><br/>
+      <b>UI:</b> Tailwind + kawaii pastel components  
+      <br/><br/>
+      <b>Backend:</b> Vercel Serverless  
+      <br/><br/>
+      <b>API Layer:</b> Lightweight API → future-ready for blockchain integration  
     </div>
 
+    <h2>🔧 System Architecture</h2>
+    <div class="card">
+      Main kawaii modules:
+      <ul>
+        <li>🌈 Soft UI Component Library</li>
+        <li>🎀 Mascot Rendering Engine</li>
+        <li>📡 API Bridge for extensions</li>
+        <li>🍡 JSON-driven content system</li>
+      </ul>
+    </div>
+
+    <h2>✨ Upcoming Features</h2>
+    <div class="card">
+      <ul>
+        <li>🌸 Kawaii mascot animation v2</li>
+        <li>💗 Wallet Connect</li>
+        <li>📖 Character lore generator</li>
+        <li>🎮 Mini interactive kawaii playground</li>
+        <li>🎨 Pastel neon 3D UI effects</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    SPARKCHAN • Tech Kawaii Edition • v2.0
   </div>
 
 </body>
