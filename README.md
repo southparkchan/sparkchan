@@ -1,1 +1,30 @@
-<p align="center"> <img src="https://img.shields.io/badge/HTML-5C5CFF?style=for-the-badge&logo=html5&logoColor=white" /> <img src="https://img.shields.io/badge/CSS-4B9CD3?style=for-the-badge&logo=css3&logoColor=white" /> <img src="https://img.shields.io/badge/Static%20Site-000000?style=for-the-badge&logo=vercel&logoColor=white" /> </p> <p align="center"> 🚀 Simple • Clean • Fast • No Framework Needed </p>
+# 🌸 **SPARKCHAN — Tech Page (Kawaii Web Edition)**  
+
+
+---
+
+## ✨ **Features**
+- 🎀 Anime Mascot Integration (Sparkchan kawaii ver.)
+- 🌈 Soft UI Pastel Theme  
+- ⚙️ Clean & Modular HTML Structure  
+- 📦 Easy to deploy on GitHub Pages  
+- 📱 Responsive layout  
+- 💫 Balanced layout: text left, character right
+
+---
+
+## 🎌 **Live Demo**
+
+
+👉 **https://sparkchan.github.io/sparkchan/tech.html**
+
+
+---
+
+## 📁 **Project Structure**
+/root
+├── index.html
+├── tech.html
+├── sparkchan-tech.png
+├── assets/
+└── README.md
