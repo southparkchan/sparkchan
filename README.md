@@ -33,9 +33,16 @@
 
 ## 📸 Preview
 
-<p align="center">
-  <img src="./sparkchan-preview.png" width="90%" alt="Sparkchan Preview"/>
-</p>
+<div align="center">
+
+### 🌸 Sparkchan Tech Page Preview
+
+<img src="./sparkchan-tech.png" alt="Sparkchan preview"
+     width="92%"
+     style="border-radius: 22px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);" />
+
+</div>
+
 
 ---
 
