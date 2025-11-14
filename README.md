@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./sparkchan banner.png" width="100%" alt="Sparkchan Banner"/>
+  <img src="./sparkchan%20banner.jpg" width="100%" alt="Sparkchan Banner"/>
   <br><br>
 
   # 🌸 **SPARKCHAN**
@@ -32,7 +32,7 @@
 ## 📸 Preview
 
 <p align="center">
-  <img src="./preview.png" width="90%" alt="Sparkchan Preview"/>
+  <img src="./sparkchan-tech.png" width="90%" alt="Sparkchan Preview"/>
 </p>
 
 ---
