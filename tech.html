@@ -1,190 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPARKCHAN TECH — Neon v3</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPARKCHAN — Tech</title>
 
   <style>
     body {
-      background: #020202;
-      color: white;
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
     }
 
-    /* 🔥 Animated Neon Grid Background */
-    #cyber-grid {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
+    .header {
       width: 100%;
-      z-index: -1;
-      background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
+      min-height: 420px;
+      background: linear-gradient(135deg, #5c00ff, #ff3ed2, #00d5ff);
+      border-bottom: 4px solid #ffffff20;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .grid-line {
-      stroke: rgba(255, 204, 51, 0.15);
-      animation: pulse 3s infinite ease-in-out;
+    /* anime character */
+    .anime {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 430px;
+      filter: drop-shadow(0px 0px 22px #ffffff);
+      opacity: 0.95;
+      pointer-events: none;
     }
 
-    @keyframes pulse {
-      0% { opacity: 0.15; }
-      50% { opacity: 0.35; }
-      100% { opacity: 0.15; }
+    .title {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      max-width: 60%;
+      z-index: 10;
+      position: relative;
+      text-shadow: 0 0 20px #00000070;
     }
 
-    /* ⚡ Floating Card Effects */
-    .tech-card {
-      background: rgba(10,10,10,0.7);
-      border: 1px solid rgba(255, 204, 51, 0.4);
-      backdrop-filter: blur(8px);
+    .subtitle {
+      font-size: 20px;
+      max-width: 55%;
+      margin-top: 16px;
+      opacity: 0.85;
+      z-index: 10;
+      position: relative;
+    }
+
+    .section {
+      padding: 60px 35px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 34px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      background: #ffffff05;
+      border: 1px solid #ffffff20;
       border-radius: 14px;
-      padding: 20px;
-      transition: transform .25s ease, box-shadow .25s ease;
+      padding: 22px;
+      margin-top: 20px;
+      backdrop-filter: blur(4px);
     }
 
-    .tech-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 18px rgba(255, 204, 51, 0.55);
+    .footer {
+      padding: 50px;
+      text-align: center;
+      opacity: 0.5;
     }
 
-    /* ⚡ Neon Title Anim */
-    .neon-title {
-      font-size: 3rem;
-      font-weight: 900;
-      text-shadow: 0 0 14px #ffcc33;
-      animation: glow 1.8s infinite ease-in-out;
-    }
-
-    @keyframes glow {
-      0% { text-shadow: 0 0 10px #ffcc33; }
-      50% { text-shadow: 0 0 24px #ffcc33; }
-      100% { text-shadow: 0 0 10px #ffcc33; }
-    }
-
-    /* Section float animation */
-    .fade-in {
-      animation: fadeInUp .8s ease forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
-
 <body>
 
-  <!-- 🔥 CYBERPUNK NEON GRID -->
-  <svg id="cyber-grid"></svg>
-
-  <script>
-    const svg = document.getElementById("cyber-grid");
-    const gridSize = 55;
-
-    function drawGrid() {
-      let w = window.innerWidth;
-      let h = window.innerHeight;
-
-      svg.setAttribute("width", w);
-      svg.setAttribute("height", h);
-
-      svg.innerHTML = '';
-
-      for (let x = 0; x < w; x += gridSize) {
-        let line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-        line.setAttribute("x1", x);
-        line.setAttribute("y1", 0);
-        line.setAttribute("x2", x);
-        line.setAttribute("y2", h);
-        line.classList.add("grid-line");
-        svg.appendChild(line);
-      }
-
-      for (let y = 0; y < h; y += gridSize) {
-        let line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-        line.setAttribute("x1", 0);
-        line.setAttribute("y1", y);
-        line.setAttribute("x2", w);
-        line.setAttribute("y2", y);
-        line.classList.add("grid-line");
-        svg.appendChild(line);
-      }
-    }
-
-    drawGrid();
-    window.onresize = drawGrid;
-  </script>
-
-  <!-- 🌐 CONTENT -->
-  <section class="py-24 text-center fade-in">
-    <h1 class="neon-title text-[#ffcc33]">SPARKCHAN — TECH</h1>
-    <p class="mt-3 text-gray-300 max-w-2xl mx-auto">
-      Privacy. Culture. Computation.  
-      This is the technical layer behind SPARKCHAN’s zk-meme architecture.
-    </p>
-  </section>
-
-  <!-- ⚙️ ARCHITECTURE SECTION -->
-  <section class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 px-6 fade-in">
-    <div class="tech-card">
-      <h2 class="text-xl font-bold text-[#ffcc33]">⚡ zk-Meme Runtime</h2>
-      <p class="text-gray-300 mt-2">
-        A proof system where memes act as programmable logic — enabling  
-        privacy-native interactions and culture-coded functions.
-      </p>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="title">⚡ SPARKCHAN <br> Technical Framework</div>
+    <div class="subtitle">
+      V2 Architecture • Smart Interaction Engine • Real-time UI Layer • Chain Expandability  
     </div>
 
-    <div class="tech-card">
-      <h2 class="text-xl font-bold text-[#ffcc33]">🔒 Privacy Execution</h2>
-      <p class="text-gray-300 mt-2">
-        Built on zero-knowledge primitives allowing censorship-resistant  
-        computation and anonymous cultural expression.
-      </p>
+    <!-- anime character -->
+    <img
+      class="anime"
+      src="https://i.ibb.co/Mc0WwKd/anime-tech-girl.png"
+      alt="anime"
+    />
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="section">
+    <h2>🚀 Core Stack</h2>
+
+    <div class="card">
+      <b>Frontend:</b> Next.js / React 19, Edge-optimized rendering, shared UI components  
+      <br/><br/>
+      <b>Backend:</b> Vercel Serverless Functions, optional RPC expansion  
+      <br/><br/>
+      <b>Styling:</b> Tailwind + custom neon anime shader  
+      <br/><br/>
+      <b>API Layer:</b> tRPC-style + fail-safe routing  
     </div>
 
-    <div class="tech-card">
-      <h2 class="text-xl font-bold text-[#ffcc33]">🧠 Meme Virtual Machine</h2>
-      <p class="text-gray-300 mt-2">
-        A specialized VM for cultural inputs, enabling zk-proof generation  
-        from social signals, creativity, and interaction flows.
-      </p>
+    <h2>🛠️ System Architecture</h2>
+    <div class="card">
+      Modular components:
+      <ul>
+        <li>⚡ Dynamic Character Engine</li>
+        <li>📡 AI/Animation Interaction Pipeline</li>
+        <li>🧩 Widget-Ready UI Blocks</li>
+        <li>💾 Configurable Content System (JSON)</li>
+      </ul>
     </div>
-  </section>
 
-  <!-- ROADMAP -->
-  <section class="py-24 fade-in text-center px-6">
-    <h2 class="text-3xl font-bold text-[#ffcc33] mb-6">ROADMAP 2025</h2>
-
-    <div class="max-w-4xl mx-auto grid gap-6">
-      <div class="tech-card">
-        <h3 class="font-bold text-[#ffcc33] text-xl">Phase 1 — Core Runtime</h3>
-        <p class="text-gray-300 mt-2">zk-meme VM, privacy execution, PFP binding.</p>
-      </div>
-
-      <div class="tech-card">
-        <h3 class="font-bold text-[#ffcc33] text-xl">Phase 2 — Meme Compute Network</h3>
-        <p class="text-gray-300 mt-2">Distributed nodes verifying cultural computation.</p>
-      </div>
-
-      <div class="tech-card">
-        <h3 class="font-bold text-[#ffcc33] text-xl">Phase 3 — SPARKCHAN SDK</h3>
-        <p class="text-gray-300 mt-2">Developer toolkit for zk-meme apps & cultural logic.</p>
-      </div>
+    <h2>🧩 Upcoming Features</h2>
+    <div class="card">
+      <ul>
+        <li>✨ Anime-based AI mascot v2</li>
+        <li>🔥 Wallet Connect + On-chain points</li>
+        <li>🧠 Auto-generated lore pages</li>
+        <li>🎮 Interactive character mini-games</li>
+        <li>🎨 Neon-theme UI 3D components</li>
+      </ul>
     </div>
-  </section>
+  </div>
 
-  <!-- FOOTER -->
-  <footer class="text-center py-10 text-gray-400 text-sm">
-    © 2025 SPARKCHAN — Powered by zk-meme proof architecture
-  </footer>
+  <div class="footer">
+    SPARKCHAN • Tech Page • v2.0
+  </div>
 
 </body>
 </html>
-
-
