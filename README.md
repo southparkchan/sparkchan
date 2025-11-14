@@ -1,5 +1,6 @@
 # 🌸 **SPARKCHAN — Tech Page (Kawaii Web Edition)**  
-
+🏷️ Badges
+<p align="left"> <img src="https://img.shields.io/badge/HTML-5-E34F26?style=for-the-badge&logo=html5&logoColor=white" /> <img src="https://img.shields.io/badge/CSS-3-1572B6?style=for-the-badge&logo=css3&logoColor=white" /> <img src="https://img.shields.io/badge/Static%20Site-✓-pink?style=for-the-badge" /> <img src="https://img.shields.io/badge/Kawaii-Mode-ffb7ef?style=for-the-badge" /> </p>
 
 ---
 
@@ -16,7 +17,7 @@
 ## 🎌 **Live Demo**
 
 
-👉 **https://sparkchan.github.io/sparkchan/tech.html**
+👉 **https://sparkchan.vercel.app**
 
 
 ---
