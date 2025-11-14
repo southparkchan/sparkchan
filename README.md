@@ -1,15 +1,17 @@
 <div align="center">
+
   <img src="./sparkchan%20banner.jpg" width="100%" alt="Sparkchan Banner"/>
   <br><br>
 
   # 🌸 **SPARKCHAN**
-  **Minimalist static site with anime mascot integration & pastel UI vibes.**
 
-  <img src="https://img.shields.io/badge/HTML-F16528?style=for-the-badge&logo=html5&logoColor=white">
-  <img src="https://img.shields.io/badge/CSS-2965F1?style=for-the-badge&logo=css3&logoColor=white">
-  <img src="https://img.shields.io/badge/Static_Site-333?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Kawaii_Mode-ffb7e2?style=for-the-badge">
+  <img src="https://img.shields.io/badge/HTML-2%20files-F16528?style=for-the-badge&logo=html5&logoColor=white">
+  <img src="https://img.shields.io/badge/CSS-1%20file-2965F1?style=for-the-badge&logo=css3&logoColor=white">
+  <img src="https://img.shields.io/badge/Static_Site-100%25-333?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Kawaii_Mode-ON-ffb7e2?style=for-the-badge">
+
 </div>
+
 
 ---
 
