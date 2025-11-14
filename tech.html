@@ -1,140 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sparkchan Tech | zk-meme Architecture</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sparkchan — Tech & Architecture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Montserrat", sans-serif;
+            background: black;
+            color: white;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #050505;
-      color: #fff;
-      overflow-x: hidden;
-    }
+        header {
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 50;
+        }
 
-    h1, h2 {
-      color: #ffcc33;
-    }
+        header a {
+            color: #ffcc33;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 20px;
+        }
 
-    a {
-      color: #ffcc33;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-    a:hover {
-      opacity: 0.8;
-    }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 60px 20px;
+        }
 
-    canvas#bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: radial-gradient(circle at center, #0d0d0d 0%, #000 100%);
-    }
-  </style>
+        h1 {
+            font-size: 60px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #ffcc33;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 50px;
+            font-size: 32px;
+            font-weight: 900;
+            color: #ffcc33;
+            border-left: 6px solid #ffcc33;
+            padding-left: 16px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .card {
+            border: 1px solid #333;
+            padding: 25px;
+            border-radius: 15px;
+            background: #111;
+            margin-top: 25px;
+        }
+
+        .diagram {
+            width: 100%;
+            margin: 40px 0;
+            border-radius: 18px;
+            border: 1px solid #333;
+        }
+
+        .list li {
+            margin-bottom: 14px;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        footer {
+            margin-top: 100px;
+            padding: 30px;
+            text-align: center;
+            opacity: 0.5;
+        }
+
+        .btn {
+            background: #ffcc33;
+            color: black;
+            font-weight: 900;
+            padding: 14px 30px;
+            border-radius: 10px;
+            font-size: 18px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 
-<body class="flex flex-col items-center justify-center min-h-screen px-6">
-  <canvas id="bg"></canvas>
+<body>
 
-  <div class="max-w-4xl py-20 text-center">
-    <h1 class="text-4xl font-bold mb-4">🧠 Sparkchan Technical Overview</h1>
-    <p class="text-gray-300 mb-8">
-      Sparkchan combines <span class="text-[#ffcc33] font-semibold">zero-knowledge computation</span> and <span class="text-[#ffcc33] font-semibold">meme-driven runtime logic</span>.
-      A next-gen internet protocol where privacy meets culture — empowering decentralized creativity and on-chain humor.
+<header>
+    <a href="/">← Back to Home</a>
+</header>
+
+<div class="container">
+
+    <h1>SPARKCHAN TECH</h1>
+
+    <p style="text-align:center; font-size:20px; opacity:0.8;">
+        The evolution of Sparkchan — Architecture, roadmap, and what's coming next.
     </p>
 
-    <h2 class="text-2xl font-bold mt-12 mb-3">📜 Architecture</h2>
-    <p class="text-gray-300 mb-8 leading-relaxed">
-      The <strong>zk-meme proof stack</strong> allows memes to act as executable smart logic.  
-      Below is a simplified architecture diagram:
-    </p>
+    <!-- SECTION: ARCHITECTURE -->
+    <h2>System Architecture</h2>
 
-    <pre class="text-left bg-[#111]/70 p-4 rounded-lg text-gray-300 overflow-x-auto">
-+---------------------------+
-| Frontend (Sparkchan.io)   |
-|  - HTML + Tailwind + ZK UI|
-+-------------+-------------+
-              |
-              v
-+---------------------------+
-| zk-Meme Runtime           |
-|  - Proof Generation (ZK)  |
-|  - Meme Logic Execution   |
-|  - Privacy Layer (SNARKs) |
-+-------------+-------------+
-              |
-              v
-+---------------------------+
-| Blockchain Layer          |
-|  - Smart Contract Bridge  |
-|  - On-chain Proof Storage |
-+---------------------------+
-    </pre>
+    <img src="a140ee6c-0798-429e-8a30-7843aa1df891.png" class="diagram" alt="Sparkchan Architecture Diagram" />
 
-    <h2 class="text-2xl font-bold mt-12 mb-3">🧩 Roadmap</h2>
-    <ul class="text-gray-300 list-disc list-inside text-left inline-block">
-      <li>✅ Launch v1 static site</li>
-      <li>🚧 Integrate zk-proof playground (v2)</li>
-      <li>⚡ Meme logic scripting toolkit</li>
-      <li>🌐 On-chain zk-verifier module</li>
-      <li>🧠 Sparkchan VM + runtime SDK</li>
-    </ul>
+    <div class="card">
+        <p>
+            Sparkchan v2 is a lightweight static deployment using:
+        </p>
+        <ul class="list">
+            <li>⚡ **HTML + Tailwind-inspired CSS** (but custom lightweight)</li>
+            <li>🚀 **Vercel Edge Hosting** for ultra-fast static delivery</li>
+            <li>🧩 Zero backend — API planned for v3</li>
+            <li>📦 Assets served from root for instant access</li>
+        </ul>
+    </div>
 
-    <h2 class="text-2xl font-bold mt-12 mb-3">💡 Links</h2>
-    <p>
-      <a href="index.html">← Back to Home</a> • 
-      <a href="https://x.com/SouthPark_Chan" target="_blank">Follow on X</a>
-    </p>
-  </div>
+    <!-- SECTION: ROADMAP -->
+    <h2>Roadmap v2 → v3</h2>
 
-  <footer class="py-6 text-gray-500 text-sm text-center">
-    zk-Meme Architecture © 2025 Sparkchan
-  </footer>
+    <div class="card">
+        <ul class="list">
+            <li>🔥 **v2.1 — Dynamic Characters + Randomizer**<br>
+                Each refresh shows a different Sparkchan variant.</li>
 
-  <script>
-    const canvas = document.getElementById("bg");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+            <li>🎮 **v2.3 — Interactive Arena**<br>
+                Early prototype of Sparkchan battle arena.</li>
 
-    let grid = [];
-    const gridSize = 50;
+            <li>💬 **v2.5 — API Layer**<br>
+                `/api/characters`, `/api/stats`, `/api/generation`.</li>
 
-    for (let x = 0; x < canvas.width; x += gridSize) {
-      for (let y = 0; y < canvas.height; y += gridSize) {
-        grid.push({ x, y });
-      }
-    }
+            <li>🧠 **v3.0 — Full React/Next.js Migration**<br>
+                Component-based, fast refresh, serverless API routes.</li>
 
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.strokeStyle = "rgba(255, 204, 51, 0.3)";
-      ctx.lineWidth = 1;
+            <li>🪩 **v3.2 — Community Dashboard**<br>
+                Rankings, activity, stats, submissions.</li>
 
-      grid.forEach((point, i) => {
-        const yShift = Math.sin(Date.now() / 500 + i) * 5;
-        ctx.beginPath();
-        ctx.moveTo(point.x, point.y + yShift);
-        ctx.lineTo(point.x + gridSize, point.y + yShift);
-        ctx.stroke();
+            <li>🎨 **v3.5 — Creator Tools**<br>
+                Sparkchan avatar builder + custom exporters.</li>
+        </ul>
+    </div>
 
-        ctx.beginPath();
-        ctx.moveTo(point.x, point.y + yShift);
-        ctx.lineTo(point.x, point.y + gridSize + yShift);
-        ctx.stroke();
-      });
+    <!-- SECTION: STACK -->
+    <h2>Tech Stack</h2>
 
-      requestAnimationFrame(draw);
-    }
+    <div class="card">
+        <ul class="list">
+            <li>⚡ **Frontend:** Vanilla HTML + CSS</li>
+            <li>☁️ **Hosting:** Vercel Static</li>
+            <li>🛠 **Build Tools:** None (super lightweight)</li>
+            <li>🔌 **APIs:** Coming in v3 via Vercel Serverless</li>
+            <li>📁 **Repo Setup:** Auto-deploy via GitHub → Vercel</li>
+        </ul>
+    </div>
 
-    draw();
-  </script>
+    <div style="text-align:center;">
+        <a class="btn" href="https://github.com/your-username/sparkchan-site" target="_blank">
+            View Repository
+        </a>
+    </div>
+
+</div>
+
+<footer>© 2025 Sparkchan. All rights reserved.</footer>
+
 </body>
 </html>
+
