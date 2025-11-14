@@ -43,10 +43,9 @@
 ---
 
 ## 📂 Project Structure
-sparkchan/
 │── index.html
 │── tech.html
 │── README.md
 │── sparkchan banner.jpg
 │── sparkchan-tech.png
-└── assets/ (optional)
+└── assets/ 
